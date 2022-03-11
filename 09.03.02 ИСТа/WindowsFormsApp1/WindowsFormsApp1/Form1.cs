@@ -12,15 +12,32 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        //imgList
+        Country[] countries = new Country[5];
+
+
         String[] imglist = new String[]
             {"0.jpg","1.jpeg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg"};
         int index = 0;
+
         public Form1()
         {
             InitializeComponent();
             pictureBox1.Load("../../../Pictures/" + imglist[0]);
             pictureBox2.Load("../../../Pictures/" + imglist[1]);
             pictureBox3.Load("../../../Pictures/" + imglist[2]);
+            Country country = new Country();
+            country.setCountryCode("ARG");
+            country.setCountryName("Argentina");
+            countries[0] = country;
+
+            country.setCountryCode("AT");
+            country.setCountryName("Austria");
+            countries[1] = country;
+
+            country.setCountryCode("AUS");
+            country.setCountryName("Australia");
+            countries[2] = country;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -67,7 +84,7 @@ namespace WindowsFormsApp1
         private void button4_Click(object sender, EventArgs e)
         {
             index = index + 1;
-            if (index+3 < imglist.Length) index = 0;
+            if (index-3 < 0) index = imglist.Length-3;
             pictureBox1.Load("../../../Pictures/" + imglist[index+0]);
             pictureBox2.Load("../../../Pictures/" + imglist[index+1]);
             pictureBox3.Load("../../../Pictures/" + imglist[index+2]);
